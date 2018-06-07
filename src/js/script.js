@@ -372,8 +372,8 @@
 		$(window).trigger('resize');
 		initCounters();
 		initPeopleCounter();
-		// initChartAllSpecialties();
-		// initChartWorkSettings();
+		initChartAllSpecialties();
+		initChartWorkSettings();
 	});
 
 	$(window).on('scroll', () => {

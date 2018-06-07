@@ -24,7 +24,7 @@
 
 .icon-box {
 	justify-content: center;
-	margin-bottom: .75em;
+	margin-bottom: $small-spacing;
 	text-align: center;
 
 	@media (min-width: 576px) {
@@ -48,19 +48,19 @@
 		align-self: center;
 		flex-wrap: nowrap;
 		justify-content: center;
-		padding: .5rem;
+		padding: $small-spacing;
 
 		svg {
 			@include size(70px);
 			display: inline-block;
-			margin-right: .375em;
+			margin-right: $small-spacing / 2;
 			vertical-align: middle;
 		}
 	}
 
 	&__content {
 		align-self: center;
-		padding: .5rem;
+		padding: $small-spacing;
 		text-align: center;
 		vertical-align: middle;
 

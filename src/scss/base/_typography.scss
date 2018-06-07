@@ -102,7 +102,7 @@ hr {
 		overflow: hidden;
 
 		@media (min-width: 992px) {
-			line-height: 1;
+			line-height: $no-line-height;
 
 			span {
 				display: block;
@@ -112,6 +112,10 @@ hr {
 
 	@media (min-width: 992px) {
 		margin-bottom: 0;
+
+		&__title {
+			@include grid-column(5);
+		}
 
 		&__left {
 			text-align: left;
@@ -123,10 +127,10 @@ hr {
 
 		&__right {
 			text-align: right;
-		}
 
-		&__title {
-			@include grid-column(5);
+			&--content {
+				@include grid-column(7);
+			}
 		}
 	}
 }
