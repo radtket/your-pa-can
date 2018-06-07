@@ -343,15 +343,15 @@
 	/* ---------------------------------------------
      Testimonial Slider
 --------------------------------------------- */
-	// $('.owl-carousel').owlCarousel({
-	// 	loop: true,
-	// 	margin: 10,
-	// 	nav: false,
-	// 	items: 1,
-	// 	autoplay: true,
-	// 	autoplayTimeout: 10000,
-	// 	autoplayHoverPause: true,
-	// });
+	$('.owl-carousel').owlCarousel({
+		loop: true,
+		margin: 10,
+		nav: false,
+		items: 1,
+		autoplay: true,
+		autoplayTimeout: 10000,
+		autoplayHoverPause: true,
+	});
 
 	/* ---------------------------------------------
      Event Listeners
