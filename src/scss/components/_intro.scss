@@ -1,0 +1,18 @@
+.intro-section {
+	background: $color-purple url('../img/overlay.png');
+	color: rgba($white, .75);
+
+	.boxtitle-section__title {
+		background: $color-purple url('../img/overlay.png');
+		color: $white;
+	}
+
+	&__copy {
+		@include grid-column(4);
+	}
+
+	&__video {
+		@include grid-column(7);
+		@include grid-shift(1);
+	}
+}

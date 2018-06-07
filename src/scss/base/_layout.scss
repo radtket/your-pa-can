@@ -22,7 +22,9 @@ body {
 // Page Sections
 
 .container {
-	@include outer-container;
+	@include grid-container;
+	margin: auto;
+	max-width: 1200px;
 	padding: 0 1rem;
 }
 
@@ -76,14 +78,14 @@ body {
 }
 
 .home-section {
-	width: 100%;
-	display: block;
-	position: relative;
-	overflow: hidden;
-	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center center;
+	background-repeat: no-repeat;
 	background-size: cover;
+	display: block;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
 }
 
 

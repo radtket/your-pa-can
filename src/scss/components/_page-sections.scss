@@ -1,0 +1,58 @@
+$title-height: 2.4em;
+$title-width: $title-height * 10;
+
+.boxtitle-section {
+	overflow: initial;
+
+	&__title {
+		@include size($title-width, $title-height);
+		display: block;
+		font-size: .9em;
+		font-weight: 700;
+		left: 50%;
+		letter-spacing: .25em;
+		line-height: $title-height;
+		margin-bottom: -$title-height;
+		margin-left: -$title-width / 2;
+		padding-top: $title-height * .2;
+		position: absolute;
+		text-align: center;
+		text-transform: uppercase;
+		top: -$title-height;
+
+
+		&::before {
+			left: -35px;
+		}
+
+		&::after {
+			right: -35px;
+			transform: scaleX(-1);
+		}
+
+		&::before,
+		&::after {
+			@include size(35px, 38px);
+			background: url('../img/shadow.png');
+			bottom: -38px;
+			content: '';
+			position: absolute;
+
+			@media (max-width: 736px) {
+				background-size: 100% 100%;
+				bottom: -15px;
+				height: 15px;
+			}
+		}
+
+		@media (min-width: 737px) {
+			@include size($title-width * 1.25, $title-height * 1.25);
+			font-size: .9em;
+			line-height: $title-height * 1.25;
+			margin-bottom: -$title-height * 1.25;
+			margin-left: (-$title-width * 1.25) / 2;
+			padding-top: .5em;
+			top: -$title-height * 1.25;
+		}
+	}
+}
