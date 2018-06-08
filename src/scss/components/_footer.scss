@@ -1,0 +1,119 @@
+.footer {
+	@include padding($base-spacing $small-spacing);
+	background-color: $color-orange;
+	color: darken($color-orange, 20%);
+	text-align: center;
+
+	@media (min-width: 768px) {
+		@include padding($small-spacing null);
+		text-align: left;
+	}
+
+	a {
+		color: $white;
+	}
+
+	&__logo {
+
+		@media (max-width: 768px) {
+			margin: $small-spacing auto;
+		}
+
+		.svg--aapa {
+			display: inline-block;
+			height: 52px;
+			line-height: 0;
+			margin-right: $base-spacing;
+			vertical-align: middle;
+			width: 104px;
+
+			svg {
+				@include size(100%);
+				display: block;
+			}
+		}
+	}
+
+	&__nav {
+		@media (min-width: 768px) {
+			align-items: center;
+			display: flex;
+			flex-basis: 0;
+			flex-direction: row;
+			flex-grow: 1;
+			max-width: 100%;
+			min-height: 1px;
+			order: 1;
+			width: 100%;
+		}
+	}
+
+	&__social {
+		color: $white;
+		width: 100%;
+
+		@media (max-width: 767px) {
+			@include margin(null auto ($small-spacing / 2));
+		}
+
+		@media (min-width: 768px) {
+			@include margin(null auto ($small-spacing / 2));
+			align-items: center;
+			flex: 0 0 auto;
+			max-width: none;
+			order: 2;
+			width: auto;
+		}
+
+		a {
+			@include size($base-spacing);
+			background-color: darken($color-orange, 20%);
+			border-radius: $base-border-radius;
+			display: inline-block;
+			font-size: 1.25rem;
+			line-height: $base-spacing;
+			margin-right: $base-border-radius;
+			@each $color-name,
+			$color in $social-colors {
+				&.#{$color-name}:hover {
+					background: $color;
+				}
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+
+		}
+	}
+}
+
+
+
+.list-inline {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		display: inline-block;
+		margin-right: $small-spacing;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	.nav-link {
+
+		&:hover {
+			color: darken($color-orange, 20%);
+		}
+
+		&:first-of-type {
+			padding-left: 0;
+		}
+
+	}
+}
+

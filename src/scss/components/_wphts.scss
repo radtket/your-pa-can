@@ -34,9 +34,9 @@
 	}
 
 	&__svg {
+		min-height: 1px;
 		position: relative;
 		width: 100%;
-    min-height: 1px;
 
 		@media (min-width: 850px) {
 			@include grid-column(4);
@@ -51,10 +51,10 @@
 			}
 
 			@media (min-width: 850px) {
-				margin: 0;
-				position: absolute;
 				bottom: 0;
+				margin: 0;
 				max-width: 100%;
+				position: absolute;
 			}
 		}
 	}
