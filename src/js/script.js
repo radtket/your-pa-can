@@ -353,6 +353,40 @@
 		autoplayHoverPause: true,
 	});
 
+
+	/* ---------------------------------------------
+     Circle Charts
+--------------------------------------------- */
+function initCircleCharts() {
+	$('#circle-1').circleProgress({
+		size: 125,
+    value: 0.91,
+    fill: {
+      color: "#62489d"
+    }
+	}).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(Math.round(91 * progress) + '<i>%</i>');
+  });
+	$('#circle-2').circleProgress({
+		size: 125,
+		value: 0.92,
+		fill: {
+      color: "#f58220"
+    }
+  }).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(Math.round(92 * progress) + '<i>%</i>');
+  });
+	$('#circle-3').circleProgress({
+		size: 125,
+    value: 0.93,
+    fill: {
+      color: "#017581"
+    }
+  }).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(Math.round(93 * progress) + '<i>%</i>');
+	});
+}
+
 	/* ---------------------------------------------
      Event Listeners
 --------------------------------------------- */
@@ -374,6 +408,7 @@
 		initPeopleCounter();
 		initChartAllSpecialties();
 		initChartWorkSettings();
+		initCircleCharts();
 	});
 
 	$(window).on('scroll', () => {
