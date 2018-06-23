@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 	/* ---------------------------------------------
      Section Helpers
 --------------------------------------------- */
@@ -15,7 +15,7 @@
 
 	// Number Counters
 	function initCounters() {
-		$('.count-number-fixed').appear(function() {
+		$('.count-number-fixed').appear(function () {
 			$(this).countTo({
 				from: 0,
 				to: $(this).html(),
@@ -23,7 +23,7 @@
 				refreshInterval: 60,
 			});
 		});
-		$('.count-number-decimal').appear(function() {
+		$('.count-number-decimal').appear(function () {
 			$(this).countTo({
 				from: 0,
 				to: $(this).html(),
@@ -38,7 +38,7 @@
 
 	// People Icon Counters
 	function initPeopleCounter() {
-		$('.progress-icons').each(function() {
+		$('.progress-icons').each(function () {
 			const $this = $(this);
 			const $total = $this.attr('data-total');
 			const $icon = $this.attr('data-icon');
@@ -46,41 +46,41 @@
 			$this.css('font-size', `${$this.attr('data-font-size')}px`);
 			let i;
 			for (i = 0; i < $total; i += 1) {
-				htmldata += `<i class="fa ${$icon}"></i> `;
+				// htmldata += `<i class="fa ${$icon}"></i> `;
+				htmldata += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="2" r="2"/><path d="M12.7 5c-.5-.1-1.1-.1-1.5 0-3.4.4-4.5 4.3-4.2 7.3.1 1.3 2.2 1.3 2 0-.1-1.1-.1-2.7.5-3.9V12.8c0 3.4 0 6.7-.1 10.1-.1 1.5 2.2 1.5 2.3 0 .1-2.6.1-5.3.1-7.9h.3c0 2.6 0 5.3.1 7.9.1 1.5 2.4 1.5 2.3 0-.1-3.3-.1-6.7-.1-10.1v-.3c0-1.5-.1-2.9 0-4.4.7 1.2.8 2.9.6 4.1-.1 1.3 1.9 1.3 2 0 .3-3-.8-6.9-4.3-7.2z"/></svg>`;
 			}
 			$this.html(htmldata);
 			if ($().appear && $('body').hasClass('withAnimation')) {
 				$('.progress-icons').appear(
-					function() {
-						const $this = $(this);
+					function () {
+						// const $this = $(this);
 						const $active = $this.attr('data-active');
-						const $icons = $this.find(`i:lt(${$active})`);
+						const $icons = $this.find(`svg:lt(${$active})`);
 						const $delay = parseInt(validatedata($this.attr('data-delay'), 20));
 						let delay = $delay;
-						$('*[data-color]').each(function() {
-							$(this).css('color', `#${$(this).data('color')}`);
+						$('*[data-color]').each(function () {
+							$(this).css('fill', `#${$(this).data('color')}`);
 						});
 						for (i = 0; i < $icons.length; i += 1) {
 							setTimeout(
-								(function(i) {
-									return function() {
-										i.style.color = $this.attr('data-icon-color');
+								(function (i) {
+									return function () {
+										i.style.fill = $this.attr('data-icon-color');
 									};
 								})($icons[i]),
 								delay
 							);
 							delay += $delay;
 						}
-					},
-					{
+					}, {
 						accY: -100,
 					}
 				);
 			} else {
 				$this.each(() => {
 					const $active = $this.attr('data-active');
-					const $icons = $this.find(`i:lt(${$active})`);
-					$icons.css('color', $this.attr('data-icon-color'));
+					const $icons = $this.find(`svg:lt(${$active})`);
+					$icons.css('fill', $this.attr('data-icon-color'));
 				});
 			}
 		});
@@ -179,30 +179,45 @@
 
 			calculable: true,
 
-			series: [
-				{
-					name: 'Specialties',
-					type: 'pie',
-					radius: '55%',
-					center: ['50%', '50%'],
-					label: {
-						show: false,
-					},
-					animationType: 'scale',
-					animationEasing: 'elasticOut',
-					animationDelay(idx) {
-						return Math.random() * 200;
-					},
-					data: [
-						{ value: 24.6, name: 'Primary Care' },
-						{ value: 10.7, name: 'Internal Med. Subspecialties' },
-						{ value: 8.9, name: 'Emergency Medicine' },
-						{ value: 1.3, name: 'Pediatric Subspecialties' },
-						{ value: 28.6, name: 'Other' },
-						{ value: 25.9, name: 'Surgical' },
-					],
+			series: [{
+				name: 'Specialties',
+				type: 'pie',
+				radius: '55%',
+				center: ['50%', '50%'],
+				label: {
+					show: false,
 				},
-			],
+				animationType: 'scale',
+				animationEasing: 'elasticOut',
+				animationDelay(idx) {
+					return Math.random() * 200;
+				},
+				data: [{
+						value: 24.6,
+						name: 'Primary Care',
+					},
+					{
+						value: 10.7,
+						name: 'Internal Med. Subspecialties',
+					},
+					{
+						value: 8.9,
+						name: 'Emergency Medicine',
+					},
+					{
+						value: 1.3,
+						name: 'Pediatric Subspecialties',
+					},
+					{
+						value: 28.6,
+						name: 'Other',
+					},
+					{
+						value: 25.9,
+						name: 'Surgical',
+					},
+				],
+			}, ],
 		};
 
 		chartAllSpecialties.setOption(optionsAllSpecialties);
@@ -299,29 +314,41 @@
 			color,
 			toolbox,
 			calculable: true,
-			series: [
-				{
-					name: 'Work Settings',
-					type: 'pie',
-					radius: '55%',
-					center: ['50%', '50%'],
-					label: {
-						show: false,
-					},
-					animationType: 'scale',
-					animationEasing: 'elasticOut',
-					animationDelay(idx) {
-						return Math.random() * 200;
-					},
-					data: [
-						{ value: 38.3, name: 'Hospital' },
-						{ value: 6.1, name: 'Urgent Care Center' },
-						{ value: 7.7, name: 'Other' },
-						{ value: 2.4, name: 'School, college or university' },
-						{ value: 45.5, name: 'Outpatient Office or Clinic' },
-					],
+			series: [{
+				name: 'Work Settings',
+				type: 'pie',
+				radius: '55%',
+				center: ['50%', '50%'],
+				label: {
+					show: false,
 				},
-			],
+				animationType: 'scale',
+				animationEasing: 'elasticOut',
+				animationDelay(idx) {
+					return Math.random() * 200;
+				},
+				data: [{
+						value: 38.3,
+						name: 'Hospital',
+					},
+					{
+						value: 6.1,
+						name: 'Urgent Care Center',
+					},
+					{
+						value: 7.7,
+						name: 'Other',
+					},
+					{
+						value: 2.4,
+						name: 'School, college or university',
+					},
+					{
+						value: 45.5,
+						name: 'Outpatient Office or Clinic',
+					},
+				],
+			}, ],
 		};
 
 		chartWorkSettings.setOption(optionsWorkSettings);
@@ -353,39 +380,50 @@
 		autoplayHoverPause: true,
 	});
 
-
 	/* ---------------------------------------------
      Circle Charts
 --------------------------------------------- */
-function initCircleCharts() {
-	$('#circle-1').circleProgress({
-		size: 125,
-    value: 0.91,
-    fill: {
-      color: "#62489d"
-    }
-	}).on('circle-animation-progress', function(event, progress) {
-    $(this).find('strong').html(Math.round(91 * progress) + '<i>%</i>');
-  });
-	$('#circle-2').circleProgress({
-		size: 125,
-		value: 0.92,
-		fill: {
-      color: "#f58220"
-    }
-  }).on('circle-animation-progress', function(event, progress) {
-    $(this).find('strong').html(Math.round(92 * progress) + '<i>%</i>');
-  });
-	$('#circle-3').circleProgress({
-		size: 125,
-    value: 0.93,
-    fill: {
-      color: "#017581"
-    }
-  }).on('circle-animation-progress', function(event, progress) {
-    $(this).find('strong').html(Math.round(93 * progress) + '<i>%</i>');
-	});
-}
+	function initCircleCharts() {
+		$('#circle-1')
+			.circleProgress({
+				size: 125,
+				value: 0.91,
+				fill: {
+					color: '#62489d',
+				},
+			})
+			.on('circle-animation-progress', function (event, progress) {
+				$(this)
+					.find('strong')
+					.html(`${Math.round(91 * progress)}<i>%</i>`);
+			});
+		$('#circle-2')
+			.circleProgress({
+				size: 125,
+				value: 0.92,
+				fill: {
+					color: '#f58220',
+				},
+			})
+			.on('circle-animation-progress', function (event, progress) {
+				$(this)
+					.find('strong')
+					.html(`${Math.round(92 * progress)}<i>%</i>`);
+			});
+		$('#circle-3')
+			.circleProgress({
+				size: 125,
+				value: 0.93,
+				fill: {
+					color: '#017581',
+				},
+			})
+			.on('circle-animation-progress', function (event, progress) {
+				$(this)
+					.find('strong')
+					.html(`${Math.round(93 * progress)}<i>%</i>`);
+			});
+	}
 
 	/* ---------------------------------------------
      Event Listeners

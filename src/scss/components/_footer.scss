@@ -66,17 +66,23 @@
 		}
 
 		a {
-			@include size($base-spacing);
-			background-color: darken($color-orange, 20%);
+			@include size(30px);
 			border-radius: $base-border-radius;
 			display: inline-block;
-			font-size: 1.25rem;
-			line-height: $base-spacing;
+			line-height: 30px;
 			margin-right: $base-border-radius;
+
+			.social-orange {
+				transition: fill .325s ease-in-out;
+			}
+
 			@each $color-name,
 			$color in $social-colors {
-				&.#{$color-name}:hover {
-					background: $color;
+				&.#{$color-name} svg .social-orange {
+					fill: $color;
+				}
+				&.#{$color-name}:hover svg .social-orange {
+					fill: darken($color-orange, 30%);
 				}
 			}
 
@@ -89,6 +95,22 @@
 }
 
 
+
+		// .social-orange {
+		// 	fill: darken($color-orange, 20%);
+
+		// 	// &:hover {
+		// 	// 	.social-facebook {
+		// 	// 		fill: #235b9e;
+		// 	// 	}
+		// 	// }
+
+		// 	// &.social-facebook {
+		// 	// 	&:hover {
+		// 	// 		fill: #235b9e;
+		// 	// 	}
+		// 	// }
+		// }
 
 .list-inline {
 	list-style-type: none;
