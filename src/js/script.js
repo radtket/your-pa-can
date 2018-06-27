@@ -9,6 +9,15 @@
     return $defaultValue;
   }
 
+  const siteColors = {
+    orange: '#f58220',
+    blue: '#003c69',
+    teal: '#017581',
+    grey: '#acaeb1',
+    purple: '#62489d',
+    red: '#a4203d',
+  };
+
   /* ---------------------------------------------
      Counters
 --------------------------------------------- */
@@ -42,8 +51,8 @@
       const $this = $(this);
       const $total = $this.attr('data-total');
       let htmldata = '';
-      $this.css('font-size', `${$this.attr('data-font-size')}px`);
       let i;
+      $this.css('font-size', `${$this.attr('data-font-size')}px`);
       for (i = 0; i < $total; i += 1) {
         htmldata += `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="2" r="2"/><path d="M12.7 5c-.5-.1-1.1-.1-1.5 0-3.4.4-4.5 4.3-4.2 7.3.1 1.3 2.2 1.3 2 0-.1-1.1-.1-2.7.5-3.9V12.8c0 3.4 0 6.7-.1 10.1-.1 1.5 2.2 1.5 2.3 0 .1-2.6.1-5.3.1-7.9h.3c0 2.6 0 5.3.1 7.9.1 1.5 2.4 1.5 2.3 0-.1-3.3-.1-6.7-.1-10.1v-.3c0-1.5-.1-2.9 0-4.4.7 1.2.8 2.9.6 4.1-.1 1.3 1.9 1.3 2 0 .3-3-.8-6.9-4.3-7.2z"/></svg>`;
       }
@@ -89,8 +98,7 @@
 		Parallax Header
 --------------------------------------------- */
   function initParallax() {
-    const scrolled = $(window).scrollTop();
-    $('.masthead__wrap').css('opacity', 1 - scrolled * 0.002);
+    $('.masthead__wrap').css('opacity', 1 - $(window).scrollTop() * 0.002);
   }
 
   /* ---------------------------------------------
@@ -99,62 +107,6 @@
 
   function initChartAllSpecialties() {
     // based on prepared DOM, initialize echarts instance
-
-    const tooltip = {
-      trigger: 'item',
-      confine: true,
-      formatter: '{a} <br/>{b}: {d}%',
-    };
-
-    const color = ['#f58220', '#003c69', '#017581', '#acaeb1', '#62489d', '#a4203d'];
-
-    const toolbox = {
-      show: true,
-      orient: 'vertical',
-      feature: {
-        mark: {
-          show: true,
-          title: {
-            mark: 'Markline switch',
-            markUndo: 'Undo markline',
-            markClear: 'Clear markline',
-          },
-        },
-        dataView: {
-          show: true,
-          readOnly: false,
-          title: 'View data',
-          lang: ['View chart data', 'Close', 'Update'],
-        },
-        magicType: {
-          show: true,
-          title: {
-            pie: 'Switch to pies',
-            funnel: 'Switch to funnel',
-          },
-          type: ['pie', 'funnel'],
-          option: {
-            funnel: {
-              x: '25%',
-              y: '20%',
-              width: '50%',
-              height: '70%',
-              funnelAlign: 'left',
-              max: 1548,
-            },
-          },
-        },
-        restore: {
-          show: true,
-          title: 'Restore',
-        },
-        saveAsImage: {
-          show: true,
-          title: 'Same as image',
-          lang: ['Save'],
-        },
-      },
-    };
 
     const chartAllSpecialties = echarts.init(document.getElementById('chartAllSpecialties'));
     const optionsAllSpecialties = {
@@ -165,16 +117,66 @@
         top: 20,
       },
 
-      tooltip,
+      tooltip: {
+        trigger: 'item',
+        confine: true,
+        formatter: '{a} <br/>{b}: {d}%',
+      },
 
       legend: {
         orient: 'horizontal',
         bottom: 0,
       },
 
-      color,
+      color: [siteColors.orange, siteColors.blue, siteColors.teal, siteColors.grey, siteColors.purple, siteColors.red],
 
-      toolbox,
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        feature: {
+          mark: {
+            show: true,
+            title: {
+              mark: 'Markline switch',
+              markUndo: 'Undo markline',
+              markClear: 'Clear markline',
+            },
+          },
+          dataView: {
+            show: true,
+            readOnly: false,
+            title: 'View data',
+            lang: ['View chart data', 'Close', 'Update'],
+          },
+          magicType: {
+            show: true,
+            title: {
+              pie: 'Switch to pies',
+              funnel: 'Switch to funnel',
+            },
+            type: ['pie', 'funnel'],
+            option: {
+              funnel: {
+                x: '25%',
+                y: '20%',
+                width: '50%',
+                height: '70%',
+                funnelAlign: 'left',
+                max: 1548,
+              },
+            },
+          },
+          restore: {
+            show: true,
+            title: 'Restore',
+          },
+          saveAsImage: {
+            show: true,
+            title: 'Same as image',
+            lang: ['Save'],
+          },
+        },
+      },
 
       calculable: true,
 
@@ -241,62 +243,6 @@
 		Chart #2 - Work Settings
 --------------------------------------------- */
   function initChartWorkSettings() {
-    const tooltip = {
-      trigger: 'item',
-      confine: true,
-      formatter: '{a} <br/>{b}: {d}%',
-    };
-
-    const color = ['#f58220', '#017581', '#a4203d', '#003c69', '#62489d'];
-
-    const toolbox = {
-      show: true,
-      orient: 'vertical',
-      feature: {
-        mark: {
-          show: true,
-          title: {
-            mark: 'Markline switch',
-            markUndo: 'Undo markline',
-            markClear: 'Clear markline',
-          },
-        },
-        dataView: {
-          show: true,
-          readOnly: false,
-          title: 'View data',
-          lang: ['View chart data', 'Close', 'Update'],
-        },
-        magicType: {
-          show: true,
-          title: {
-            pie: 'Switch to pies',
-            funnel: 'Switch to funnel',
-          },
-          type: ['pie', 'funnel'],
-          option: {
-            funnel: {
-              x: '25%',
-              y: '20%',
-              width: '50%',
-              height: '70%',
-              funnelAlign: 'left',
-              max: 1548,
-            },
-          },
-        },
-        restore: {
-          show: true,
-          title: 'Restore',
-        },
-        saveAsImage: {
-          show: true,
-          title: 'Same as image',
-          lang: ['Save'],
-        },
-      },
-    };
-
     const chartWorkSettings = echarts.init(document.getElementById('chartWorkSettings'));
     const optionsWorkSettings = {
       title: {
@@ -304,14 +250,64 @@
         subtext: '2017 AAPA Salary Survey',
         x: 'center',
       },
-      tooltip,
+      tooltip: {
+        trigger: 'item',
+        confine: true,
+        formatter: '{a} <br/>{b}: {d}%',
+      },
 
       legend: {
         orient: 'horizontal',
         bottom: 0,
       },
-      color,
-      toolbox,
+      color: [siteColors.orange, siteColors.blue, siteColors.teal, siteColors.grey, siteColors.purple, siteColors.red],
+      toolbox: {
+        show: true,
+        orient: 'vertical',
+        feature: {
+          mark: {
+            show: true,
+            title: {
+              mark: 'Markline switch',
+              markUndo: 'Undo markline',
+              markClear: 'Clear markline',
+            },
+          },
+          dataView: {
+            show: true,
+            readOnly: false,
+            title: 'View data',
+            lang: ['View chart data', 'Close', 'Update'],
+          },
+          magicType: {
+            show: true,
+            title: {
+              pie: 'Switch to pies',
+              funnel: 'Switch to funnel',
+            },
+            type: ['pie', 'funnel'],
+            option: {
+              funnel: {
+                x: '25%',
+                y: '20%',
+                width: '50%',
+                height: '70%',
+                funnelAlign: 'left',
+                max: 1548,
+              },
+            },
+          },
+          restore: {
+            show: true,
+            title: 'Restore',
+          },
+          saveAsImage: {
+            show: true,
+            title: 'Same as image',
+            lang: ['Save'],
+          },
+        },
+      },
       calculable: true,
       series: [
         {
@@ -389,7 +385,7 @@
           size: 125,
           value: 0.91,
           fill: {
-            color: '#62489d',
+            color: siteColors.purple,
           },
         })
         .on('circle-animation-progress', function(event, progress) {
@@ -402,7 +398,7 @@
           size: 125,
           value: 0.92,
           fill: {
-            color: '#f58220',
+            color: siteColors.orange,
           },
         })
         .on('circle-animation-progress', function(event, progress) {
@@ -415,7 +411,7 @@
           size: 125,
           value: 0.93,
           fill: {
-            color: '#017581',
+            color: siteColors.teal,
           },
         })
         .on('circle-animation-progress', function(event, progress) {
