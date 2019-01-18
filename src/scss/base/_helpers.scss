@@ -44,11 +44,10 @@
 
 
 // Color Helpers ====================================================================
-$color-list: (
-	"orange": #f58220, "purple": #62489d, "teal": #017581, "gray": #e7e7e8, "blue": #003c69, "black": #333, "white": #fff
-);
+$color-list: ("orange": #f58220, "purple": #62489d, "teal": #017581, "gray": #e7e7e8, "blue": #003c69, "black": #333, "white": #fff);
 
-@each $color-name, $color-value in $color-list {
+@each $color-name,
+$color-value in $color-list {
 	.bg-#{$color-name} {
 		background-color: $color-value;
 	}
