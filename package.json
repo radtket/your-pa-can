@@ -1,6 +1,7 @@
 {
-  "name": "YourPaCan",
+  "name": "your-pa-can",
   "version": "1.0.0",
+  "description": "YourPACan was a campaign run by the American Academy of Physician Assistants to promote awareness about PA's",
   "main": "docs/index.html",
   "scripts": {
     "start": "gulp watch",
@@ -8,6 +9,18 @@
   },
   "author": "Taylor Radtke",
   "license": "ISC",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/radtket/your-pa-can.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/radtket/your-pa-can/issues"
+  },
+  "homepage": "https://github.com/radtket/your-pa-can#readme",
   "devDependencies": {
     "autoprefixer": "^9.4.5",
     "babel-cli": "^6.26.0",
