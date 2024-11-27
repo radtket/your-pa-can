@@ -1,8 +1,8 @@
-# Your PA Can - AAPA
+**Your PA Can Webpage**  
+An informative site designed to educate visitors about Physician Assistants (PAs) and their critical role in healthcare. It highlights their extensive training, versatility, and contributions to improving healthcare access and quality across various specialties. The page includes statistics, educational pathways, and certification requirements, emphasizing the value PAs bring to patient care.
 
-YourPACan was a campaign run by the American Academy of Physician Assistants to promote awareness about PA's
-
-**Live demo:** [https://radtket.github.io/your-pa-can/](https://radtket.github.io/your-pa-can/)
+**GitHub Repository:** [radtket/your-pa-can](https://github.com/radtket/your-pa-can)  
+**Live Demo:** [Your PA Can](https://radtket.github.io/your-pa-can/)
 
 ## Getting started
 
